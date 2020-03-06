@@ -2,22 +2,29 @@ import styled from 'styled-components';
 
 export const FormConstructorMainBlock = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 35px;
+  #goToForm {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 22px;
+  }
 `;
 
 export const FormConstructor = styled.form`
   width: 800px;
-  min-height: 300px;
+  min-height: 850px;
   background: rgba(41,151,241, .8);
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-bottom: 50px;
   & * {
     color: #fff;
     font-family: 'Amatic SC', 'sans-serif';
@@ -56,8 +63,19 @@ export const FormConstructorInputBlock = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 25px;
+  #formTitle {
+    width: 85%;
+  }
   #inputBG {
     width: 150px;
+  }
+  #inputBorderColor {
+    width: 150px;
+  }
+  #inputRequired {
+    width: 50px; 
+    cursor: pointer;
   }
 `;
 
@@ -115,5 +133,55 @@ export const FormConstructorInput = styled.input`
   margin-bottom: 7px;
   &::placeholder {
     color: rgba(255,255,255, .5);
+  }
+`;
+
+export const FormConstructorAddInput = styled.button`
+  width: 150px;
+  height: 50px;
+  background: #0E57AA;
+  outline: none;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+  margin-bottom: 30px;
+  &:hover {
+    background: #014A9D;
+  }
+  &:active {
+    background: #0E57AA;
+  }
+`;
+
+export const FormConstructorLine = styled.hr`
+  width: 85%;
+  height: 2px;
+  border: none;
+  background: #014A9D;
+  
+`;
+
+export const MakeFormButton = styled.button`
+  width: 250px;
+  min-height: 80px;
+  background: #0E57AA;
+  outline: none;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .2s;
+  margin-bottom: 25px;
+  &:hover {
+    background: #014A9D;
+  }
+  &:active {
+    background: #0E57AA;
   }
 `;
