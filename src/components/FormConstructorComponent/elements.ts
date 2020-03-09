@@ -38,22 +38,6 @@ export const FormConstructorTip = styled.p`
   font-size: 16px;
 `;
 
-export const Title = styled.h1`
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 36px;
-  letter-spacing: 1.33px;
-  margin-bottom: 30px;
-`;
-
-export const FormConstructorTitle = styled.h3`
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  font-size: 36px;
-`;
-
 export const FormConstructorInputBlock = styled.div`
   width: 75%;
   min-height: 105px;

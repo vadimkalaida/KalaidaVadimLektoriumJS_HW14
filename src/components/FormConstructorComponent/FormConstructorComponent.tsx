@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import { FormConstructor, FormConstructorMainBlock, Title, FormConstructorTitle, FormConstructorTip, FormConstructorInputBlock, DropDownMenu,
+import { FormConstructor, FormConstructorMainBlock, FormConstructorTip, FormConstructorInputBlock, DropDownMenu,
   FormConstructorInput, FormConstructorAddInput, FormConstructorLine, MakeFormButton } from "./elements";
+import { Title, FormTitle } from '../../elements'
 
 const FormConstructorComponent : React.FC = () => {
   const [ inputType, setInputType ] : React.ComponentState = useState('Type:');
@@ -205,12 +206,30 @@ const FormConstructorComponent : React.FC = () => {
     event.preventDefault();
 
     let formArray = [];
+    let formTitle = '';
+    let formInputs = [];
+    let formSubmit = [];
 
     formArray.push(formComponentsArray);
 
-    localStorage.setItem('form_objects', JSON.stringify(formArray));
+    for(let i : number = 0; i < formArray[0].length; i++) {
+      if(formArray[0][i].title) {
+        formTitle = formArray[0][i].title;
+      }
+      if(formArray[0][i].its === 'input') {
+        formInputs.push(formArray[0][i]);
+      }
+      if(formArray[0][i].its === 'submitButton') {
+        formSubmit.push(formArray[0][i]);
+      }
+    }
 
-    alert('Form was made');
+    localStorage.setItem('form_objects', JSON.stringify(formArray));
+    localStorage.setItem('form_title', formTitle);
+    localStorage.setItem('form_inputs', JSON.stringify(formInputs));
+    localStorage.setItem('form_submit', JSON.stringify(formSubmit));
+
+    alert('Form was made! Please go to new form and reload page!');
 
     setFormComponentsArray([]);
 
@@ -223,7 +242,7 @@ const FormConstructorComponent : React.FC = () => {
       <FormConstructor>
         <FormConstructorTip>Checkbox(checked) - required</FormConstructorTip>
 
-        <FormConstructorTitle>Title</FormConstructorTitle>
+        <FormTitle>Title</FormTitle>
         <FormConstructorInputBlock>
           <FormConstructorInput type={'text'} id={'formTitle'} name={'formTitle'} onChange={handleFormTitleChange} value={ formTitle } placeholder={'Title'} />
         </FormConstructorInputBlock>
@@ -231,7 +250,7 @@ const FormConstructorComponent : React.FC = () => {
 
         <FormConstructorLine />
 
-        <FormConstructorTitle>Input</FormConstructorTitle>
+        <FormTitle>Input</FormTitle>
         <FormConstructorInputBlock>
           <DropDownMenu>
             <span>{ inputType }</span>
@@ -256,7 +275,7 @@ const FormConstructorComponent : React.FC = () => {
 
         <FormConstructorLine />
 
-        <FormConstructorTitle>Submit Button</FormConstructorTitle>
+        <FormTitle>Submit Button</FormTitle>
         <FormConstructorInputBlock>
           <FormConstructorInput type={'text'} id={'formSubmitButtonText'} name={'formSubmitButtonText'} onChange={handleFormSubmitButtonTextChange} value={ formSubmitButtonText } placeholder={'Text'} />
           <FormConstructorInput type={'text'} id={'formSubmitButtonColor'} name={'formSubmitButtonColor'} onChange={handleFormSubmitButtonColorChange} value={ formSubmitButtonColor } placeholder={'color(#0E57AA)'} />
@@ -272,6 +291,6 @@ const FormConstructorComponent : React.FC = () => {
       { showLinkNumber === 1 ? <Link to={'/form'} id='goToForm'>Go To Form</Link> : null}
     </FormConstructorMainBlock>
   )
-}
+};
 
 export default FormConstructorComponent;
